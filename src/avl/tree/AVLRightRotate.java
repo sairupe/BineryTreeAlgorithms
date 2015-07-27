@@ -88,6 +88,14 @@ public class AVLRightRotate {
 			}
 			leftChild.rightChild = rotationNode;
 			rotationNode.parent = leftChild;
+			
+			// 重新定义调整高度，别忘记了!!!!!
+			((AVLTreeNode)rotationNode).height 
+				= AVLInsert.max(AVLInsert.getHeight(rotationNode.leftChild),
+						AVLInsert.getHeight(rotationNode.rightChild)) + 1;
+			((AVLTreeNode)leftChild).height 
+				= AVLInsert.max(AVLInsert.getHeight(rotationNode.leftChild),
+						AVLInsert.getHeight(rotationNode.rightChild)) + 1;
 			return leftChild;
 		}
 }
