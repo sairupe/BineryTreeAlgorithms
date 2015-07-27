@@ -35,17 +35,6 @@ public class TreapTreeInsert {
 		}
 		// 随机修正权值
 		int randomFix = TreapUtil.getRandomIntByRange(100);
-		// ========TEST===============
-		if(insertKetValue == 17){
-			randomFix = 50;
-		}
-		else if(insertKetValue == 3){
-			randomFix = 60;
-		}
-		else if(insertKetValue == 22){
-			randomFix = 40;
-		}
-		// ========TEST===============
 		newNode.fix = randomFix;
 		// 循环检查父节点
 		TreeNode checkParent = newNode.parent;
