@@ -1,7 +1,5 @@
 package treap.tree;
 
-import avl.tree.AVLLeftRotate;
-import avl.tree.AVLRightRotate;
 import bsearch.tree.TreeNode;
 
 /*
@@ -37,19 +35,32 @@ public class TreapTreeInsert {
 		}
 		// 随机修正权值
 		int randomFix = TreapUtil.getRandomIntByRange(100);
+		// ========TEST===============
+		if(insertKetValue == 17){
+			randomFix = 50;
+		}
+		else if(insertKetValue == 3){
+			randomFix = 60;
+		}
+		else if(insertKetValue == 22){
+			randomFix = 40;
+		}
+		// ========TEST===============
 		newNode.fix = randomFix;
 		// 循环检查父节点
-		while(newNode.parent != null){
+		TreeNode checkParent = newNode.parent;
+		while(checkParent != null){
 			if(newNode.fix < ((TreapTreeNode)newNode.parent).fix){
 				if(newNode == newNode.parent.leftChild){
 					// 进行右旋(RR)
-					AVLRightRotate.rightRotate2(newNode);
+					checkParent = TreapRightRotate.rightRotate(newNode.parent);// 根据父节点进行旋转
 				}
 				else{
 					// 进行左旋(LL)
-					AVLLeftRotate.leftRotate2(newNode);
+					checkParent = TreapLeftRotate.leftRotate(newNode.parent);// 根据父节点进行旋转
 				}
 			}
+			checkParent = checkParent.parent;
 		}
 	}
 	

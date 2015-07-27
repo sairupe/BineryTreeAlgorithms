@@ -9,4 +9,9 @@ public class TreapTreeNode extends TreeNode {
 	public TreapTreeNode(int key) {
 		super(key);
 	}
+	
+	@Override
+	public String toString() {
+		return key + ":" + fix + "|";
+	}
 }

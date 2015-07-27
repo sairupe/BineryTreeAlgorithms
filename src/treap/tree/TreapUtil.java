@@ -16,7 +16,7 @@ public class TreapUtil {
 		TreapTreeNode ttn = (TreapTreeNode) rootNode;
 		if(rootNode.leftChild != null)
 			treapLDRShow(rootNode.leftChild);
-		System.out.print(rootNode.key + ":" + ttn.fix + "|");
+		System.out.print(ttn.toString());
 		if(rootNode.rightChild != null)
 			treapLDRShow(rootNode.rightChild);
 	}
