@@ -18,8 +18,13 @@ public class BTreeInsert {
 		LDR.LDRShow(root.rootNode);
 	}
 
-	
-	public static void insert(TreeNode root, int key){
+	/**
+	 * 
+	 * @param root 二叉树根节点
+	 * @param key 关键字的值
+	 * @return 新插入的节点
+	 */
+	public static TreeNode insert(TreeNode root, int key){
 		TreeNode newNode = new TreeNode(key);
 		TreeNode insertParentNode = root;
 		TreeNode lastCheckNode = null;
@@ -40,5 +45,6 @@ public class BTreeInsert {
 		else{
 			lastCheckNode.rightChild = newNode;
 		}
+		return newNode;
 	}
 }
