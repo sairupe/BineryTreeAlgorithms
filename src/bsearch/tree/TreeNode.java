@@ -1,6 +1,7 @@
 package bsearch.tree;
 
 public class TreeNode {
+	
 	public TreeNode parent;
 	public TreeNode leftChild;
 	public TreeNode rightChild;
@@ -34,5 +35,10 @@ public class TreeNode {
 	 */
 	public void changeDataKey(TreeNode node){
 		this.key = node.key;
+	}
+	
+	@Override
+	public String toString() {
+		return key + " | ";
 	}
 }
