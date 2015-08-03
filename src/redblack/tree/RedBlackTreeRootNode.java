@@ -18,6 +18,11 @@ public class RedBlackTreeRootNode {
 	// 跳过CASE 2的一组红黑树
 	public static TreeNode rootDeleteCase134;
 	
+	// 左旋右旋更改的节点
+	public static int P168 = 1;
+	public static int CASE12 = 2;
+	public static int CASE134 = 3;
+	
 	/**
 	 * P168 的图 13-4构造红黑树，目标插入的节点为4
 	 */
@@ -217,7 +222,7 @@ public class RedBlackTreeRootNode {
 		k4.leftChild = NilNode.nilNode;
 		k4.rightChild = NilNode.nilNode;
 		
-		rootDeleteCase12 = k3;
+		rootDeleteCase134 = k3;
 		return rootDeleteCase134;  
 	}
 	
