@@ -34,7 +34,7 @@ public class RedBlackTreeDelete {
 					w.color = Color.BLACK;
 					RedBlackTreeUtil.leftRotate2(x.parent,  RedBlackTreeRootNode.CASE134);
 					w = (RedBlackTreeNode) x.parent.rightChild;
-					continue;// 参考INSERT的另外一种写法
+					//continue;// 参考INSERT的另外一种写法
 				}
 				// CASE 2
 				if(//w.leftChild != NilNode.nilNode && w.rightChild != NilNode.nilNode && 
@@ -42,21 +42,23 @@ public class RedBlackTreeDelete {
 						&& ((RedBlackTreeNode)w.rightChild).color == Color.BLACK){
 					w.color = Color.RED;
 					x = (RedBlackTreeNode) x.parent;
-					continue;// 参考INSERT的另外一种写法
+					//continue;// 参考INSERT的另外一种写法
 				}
 				// CASE 3
-				else if(((RedBlackTreeNode)w.rightChild).color == Color.BLACK){// w的左子树颜色为红
-					w.color = Color.RED;
-					((RedBlackTreeNode)w.leftChild).color = Color.BLACK;
-					RedBlackTreeUtil.rightRotate2(w, RedBlackTreeRootNode.CASE134);
-					w = (RedBlackTreeNode) x.parent.rightChild;
+				else {
+					if(((RedBlackTreeNode)w.rightChild).color == Color.BLACK){// w的左子树颜色为红
+						w.color = Color.RED;
+						((RedBlackTreeNode)w.leftChild).color = Color.BLACK;
+						RedBlackTreeUtil.rightRotate2(w, RedBlackTreeRootNode.CASE134);
+						w = (RedBlackTreeNode) x.parent.rightChild;
+					}
+					// CASE 4 实际属于CASE 3的一个分支，参考INSERT
+					w.color = ((RedBlackTreeNode)x.parent).color;
+					((RedBlackTreeNode)x.parent).color = Color.BLACK;
+					((RedBlackTreeNode)w.rightChild).color = Color.BLACK;
+					RedBlackTreeUtil.leftRotate2(x.parent, RedBlackTreeRootNode.CASE134);
+					x = (RedBlackTreeNode) RedBlackTreeRootNode.rootDeleteCase134; 
 				}
-				// CASE 4 实际属于CASE 3的一个分支，参考INSERT
-				w.color = ((RedBlackTreeNode)x.parent).color;
-				((RedBlackTreeNode)x.parent).color = Color.BLACK;
-				((RedBlackTreeNode)w.rightChild).color = Color.BLACK;
-				RedBlackTreeUtil.leftRotate2(x.parent, RedBlackTreeRootNode.CASE134);
-				x = (RedBlackTreeNode) RedBlackTreeRootNode.rootDeleteCase134; 
 			}
 			else{//x == x.parent.rightChild
 				RedBlackTreeNode w = (RedBlackTreeNode) x.parent.leftChild;
@@ -66,7 +68,6 @@ public class RedBlackTreeDelete {
 					w.color = Color.BLACK;
 					RedBlackTreeUtil.rightRotate2(x.parent, RedBlackTreeRootNode.CASE134);
 					w = (RedBlackTreeNode) x.parent.leftChild;
-					continue;
 				}
 				// CASE 2
 				if(//w.leftChild != NilNode.nilNode && w.rightChild != NilNode.nilNode && 
@@ -74,21 +75,22 @@ public class RedBlackTreeDelete {
 						&& ((RedBlackTreeNode)w.rightChild).color == Color.BLACK){
 					w.color = Color.RED;
 					x = (RedBlackTreeNode) x.parent;
-					continue;
 				}
 				// CASE 3
-				else if(((RedBlackTreeNode)w.leftChild).color == Color.BLACK){// w的左子树颜色为红
-					w.color = Color.RED;
-					((RedBlackTreeNode)w.rightChild).color = Color.BLACK;
-					RedBlackTreeUtil.leftRotate2(w, RedBlackTreeRootNode.CASE134);
-					w = (RedBlackTreeNode) x.parent.rightChild;
+				else {
+					if(((RedBlackTreeNode)w.leftChild).color == Color.BLACK){// w的左子树颜色为红
+						w.color = Color.RED;
+						((RedBlackTreeNode)w.rightChild).color = Color.BLACK;
+						RedBlackTreeUtil.leftRotate2(w, RedBlackTreeRootNode.CASE134);
+						w = (RedBlackTreeNode) x.parent.rightChild;
+					}
+					// CASE 4
+					w.color = ((RedBlackTreeNode)x.parent).color;
+					((RedBlackTreeNode)x.parent).color = Color.BLACK;
+					((RedBlackTreeNode)w.leftChild).color = Color.BLACK;
+					RedBlackTreeUtil.rightRotate2(x.parent, RedBlackTreeRootNode.CASE134);
+					x = (RedBlackTreeNode) RedBlackTreeRootNode.rootDeleteCase134; 
 				}
-				// CASE 4
-				w.color = ((RedBlackTreeNode)x.parent).color;
-				((RedBlackTreeNode)x.parent).color = Color.BLACK;
-				((RedBlackTreeNode)w.leftChild).color = Color.BLACK;
-				RedBlackTreeUtil.rightRotate2(x.parent, RedBlackTreeRootNode.CASE134);
-				x = (RedBlackTreeNode) RedBlackTreeRootNode.rootDeleteCase134; 
 			}
 		}
 		x.color = Color.BLACK;
