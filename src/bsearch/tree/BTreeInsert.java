@@ -15,6 +15,8 @@ public class BTreeInsert {
 	public static void main(String[] args) {
 		BSearchTreeRootNode root = new BSearchTreeRootNode();
 		insert(root.rootNode, 11);
+		LDR.LDR_UnRecursive(root.rootNode);
+		System.out.println();
 		LDR.LDRShow(root.rootNode);
 	}
 
