@@ -22,8 +22,10 @@ public class LRD {
 		LRDShow(root.rootNode);
 		System.out.println("\n===========UnRecursive===========");
 		LRD_UnRecursive(root.rootNode);
-		System.out.println("\n===========UnRecursive2===========");
-		LRD_UnRecursive2(root.rootNode);
+		System.out.println("\n===========UnRecursive Root Null===========");
+		LRD_UnRecursive(null);
+		//System.out.println("\n===========UnRecursive2===========");
+		//LRD_UnRecursive2(root.rootNode);
 	}
 	public static void LRDShow(TreeNode rootNode){
 		if(rootNode.leftChild != null)
@@ -47,7 +49,8 @@ public class LRD {
             }  
            
             // 访问过右子树才能输出
-            while (!s.empty() && s2.peek().equals(i)) {  
+            while (!s.empty() &&  
+            		s2.peek().equals(i)) {  
                 s2.pop();  
                 System.out.print(s.pop().key + "|");  
             }  

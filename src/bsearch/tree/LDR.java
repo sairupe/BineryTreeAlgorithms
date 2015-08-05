@@ -19,8 +19,10 @@ public class LDR {
 		BSearchTreeRootNode root = new BSearchTreeRootNode();
 		System.out.println("============Recursived============");
 		LDRShow(root.rootNode);
-		System.out.println("============UnRecursived============");
+		System.out.println("\n============UnRecursived============");
 		LDR_UnRecursive(root.rootNode);
+		System.out.println("\n============UnRecursived Root NULL============");
+		LDR_UnRecursive(null);
 	}
 	public static void LDRShow(TreeNode rootNode){
 		if(rootNode.leftChild != null)
@@ -33,16 +35,16 @@ public class LDR {
     // 中序遍历非递归   
     public static void LDR_UnRecursive(TreeNode t) {  
         Stack<TreeNode> s = new Stack<TreeNode>();  
-        while (t != null || !s.empty()) {  
+        while (t != null || !s.empty()) {// 当右子树为空时，栈可能不为空，故还是会进去打印
             while (t != null) {  
                 s.push(t);  
                 t = t.leftChild;  
             }  
-            if (!s.empty()) {  
+            //if (!s.empty()) {// 防止t传进来是NULL 
                 t = s.pop();  
                 System.out.print(t.key + "|");  
                 t = t.rightChild;  
-            }  
+            //}  
         }  
     } 
     

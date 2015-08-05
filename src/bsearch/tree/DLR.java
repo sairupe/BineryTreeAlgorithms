@@ -21,10 +21,12 @@ import java.util.concurrent.ArrayBlockingQueue;
 public class DLR {
 	public static void main(String[] args) {
 		BSearchTreeRootNode root = new BSearchTreeRootNode();
-		System.out.println("\n===========Recursive===========");
+		System.out.println("===========Recursive===========");
 		DLRShow(root.rootNode);
 		System.out.println("\n===========UnRecursive===========");
 		DLR_UnRecursive(root.rootNode);
+		System.out.println("\n===========UnRecursive Root NULL===========");
+		DLR_UnRecursive(null);
 		System.out.println("\n===========DLR_BRAND_SEARCH===========");
 		DLR_BRAND_SEARCH(root.rootNode);
 	}
@@ -45,10 +47,10 @@ public class DLR {
                 s.push(t);  
                 t = t.leftChild;  
             }  
-            if (!s.empty()) {  
+            //if (!s.empty()) {  
                 t = s.pop();  
                 t = t.rightChild;  
-            }  
+            //}  
         }  
     }  
     
